@@ -20,9 +20,7 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
     private User current;
     private UserGroup currentGroup;
 
-    /**
-     * Creates new form AdminCP
-     */
+    // Singleton Pattern
     private AdminCP() {
         root = new UserGroup("Root");
         initComponents();
