@@ -5,17 +5,17 @@ import javax.swing.JOptionPane;
 public class MessagesVisitor implements Visitor {
 
     @Override
-    public void visit(User u) {
+    public void visit(User user) {
         int total = 0;
-        for (Object o : u.getUsers()) {
-            User us = (User) o;
-            total += us.getTweets().size();
+        for (Object temp : user.getUsers()) {
+            User followingUser = (User) temp;
+            total += followingUser.getTweets().size();
         }
         JOptionPane.showMessageDialog(null, "Total tweets: " + total);
     }
 
     @Override
-    public void visit(UserGroup ug) {
+    public void visit(UserGroup userGroup) {
         throw new UnsupportedOperationException();
     }
 

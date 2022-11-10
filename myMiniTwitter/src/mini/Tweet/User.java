@@ -5,12 +5,12 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class User extends UserManager implements Subject {
-    private String group; // Can only belong to one.
     private static HashMap<String, User> users = new HashMap<String, User>();
     private ArrayList<Observer> followers;
     private ArrayList<String> following;
     private ArrayList<String> tweets;
     private NewsFeed newsFeed;
+    private String group;
 
     // Constructor
     public User(String id, String group) {
@@ -69,8 +69,55 @@ public class User extends UserManager implements Subject {
     }
     // ----------End Implemented Methods----------
 
+    // -----------Default Methods-----------
+    // Some default methods are managed by the UserManager Class
     public NewsFeed getFeed() {
         return newsFeed;
+    }
+
+    public ArrayList<Observer> getFollowers() {
+        return followers;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public ArrayList<String> getTweets() {
+        return tweets;
+    }
+
+    public ArrayList<String> getFollowing() {
+        return following;
+    }
+
+    public void setFollowers(ArrayList<Observer> followers) {
+        this.followers = followers;
+    }
+
+    public void setFollowing(ArrayList<String> following) {
+        this.following = following;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setNewsFeed(NewsFeed newsFeed) {
+        this.newsFeed = newsFeed;
+    }
+
+    public void setTweets(ArrayList<String> tweets) {
+        this.tweets = tweets;
+    }
+
+    public static void setUsers(HashMap<String, User> users) {
+        User.users = users;
+    }
+    // -----------End Default Methods-----------
+
+    public Collection getUsers() {
+        return users.values();
     }
 
     public static boolean exists(String uid) {
@@ -89,14 +136,6 @@ public class User extends UserManager implements Subject {
         group = id;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
-    public ArrayList<String> getTweets() {
-        return tweets;
-    }
-
     public void tweet(String msg) {
         tweets.add(msg);
         notifyObs();
@@ -106,11 +145,4 @@ public class User extends UserManager implements Subject {
         return following.contains(id);
     }
 
-    public ArrayList<String> getFollowing() {
-        return following;
-    }
-
-    public Collection getUsers() {
-        return users.values();
-    }
 }

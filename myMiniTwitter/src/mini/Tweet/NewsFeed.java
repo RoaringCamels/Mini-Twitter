@@ -6,22 +6,23 @@ public class NewsFeed implements Observer, Subject {
     ArrayList<String> feed;
     ArrayList<Observer> followers;
 
+    // Constructor
     public NewsFeed() {
         feed = new ArrayList<String>();
         followers = new ArrayList<Observer>();
     }
+    // end Constructor
 
+    // ---------- Observer Implementation----------
     @Override
     public void update(String msg, Subject sub) {
         User u = (User) sub;
         feed.add(u.getID() + ": " + msg);
         notifyObs();
     }
+    // ---------- End Observer Implementation----------
 
-    public ArrayList<String> getFeed() {
-        return feed;
-    }
-
+    // ----------Subject Implementation----------
     @Override
     public void register(Observer obj) {
         if (obj == null) {
@@ -43,5 +44,12 @@ public class NewsFeed implements Observer, Subject {
     public Object getUpdate(Observer obj) {
         throw new UnsupportedOperationException();
     }
+    // ----------End Subject Implementation----------
+
+    // ----------Default Methods----------
+    public ArrayList<String> getFeed() {
+        return feed;
+    }
+    // ----------End Default Methods----------
 
 }

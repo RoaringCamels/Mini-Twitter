@@ -41,8 +41,8 @@ public class PositiveVisitor implements Visitor {
     }
 
     @Override
-    public void visit(UserGroup ug) {
-
+    public void visit(UserGroup userGroup) {
+        throw new UnsupportedOperationException();
     }
 
 }
