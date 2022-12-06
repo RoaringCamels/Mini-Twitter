@@ -27,6 +27,7 @@ public class User extends UserManager implements Subject {
             this.newsFeed = new NewsFeed();
             this.register(newsFeed);
             this.uniqueID = randomIDGenerator(5);
+            System.out.println(uniqueID);
             this.creationTime = System.currentTimeMillis();
             System.out.println(getCreationTime());
             users.put(id, this);

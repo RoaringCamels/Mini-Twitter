@@ -14,7 +14,9 @@ public class UserGroup extends UserManager {
     public UserGroup(String id) {
         members = new ArrayList<UserManager>();
         this.userID = id;
-        this.groupUniqueID = randomIDGenerator(7);
+        this.groupUniqueID = randomIDGenerator(10);
+        System.out.println(groupUniqueID);
+
         this.groupCreationTime = System.currentTimeMillis();
         System.out.println(groupCreationTime);
         groups.put(id, this);
