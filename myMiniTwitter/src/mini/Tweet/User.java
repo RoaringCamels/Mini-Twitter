@@ -1,8 +1,10 @@
 package mini.Tweet;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 public class User extends UserManager implements Subject {
     private static HashMap<String, User> users = new HashMap<String, User>();
@@ -11,6 +13,8 @@ public class User extends UserManager implements Subject {
     private ArrayList<String> tweets;
     private NewsFeed newsFeed;
     private String group;
+    private String uniqueID;
+    private long creationTime;
 
     // Constructor
     public User(String id, String group) {
@@ -22,6 +26,9 @@ public class User extends UserManager implements Subject {
             this.group = group;
             this.newsFeed = new NewsFeed();
             this.register(newsFeed);
+            this.uniqueID = randomIDGenerator(5);
+            this.creationTime = System.currentTimeMillis();
+            System.out.println(getCreationTime());
             users.put(id, this);
         } else {
             System.out.println("This Id already exists....");
@@ -83,12 +90,20 @@ public class User extends UserManager implements Subject {
         return group;
     }
 
+    public String getUniqueID() {
+        return uniqueID;
+    }
+
     public ArrayList<String> getTweets() {
         return tweets;
     }
 
     public ArrayList<String> getFollowing() {
         return following;
+    }
+
+    public long getCreationTime() {
+        return creationTime;
     }
 
     public void setFollowers(ArrayList<Observer> followers) {
@@ -145,4 +160,29 @@ public class User extends UserManager implements Subject {
         return following.contains(id);
     }
 
+    /**
+     * This method creates the student ID randomly picked from a default set String
+     * called
+     * notSoRandom
+     * 
+     * @param lengthOfID integer that defines the length of the String to be
+     *                   returned
+     * @return Randomly generated ID of type String
+     */
+    private String randomIDGenerator(int lengthOfID) {
+        String notSoRandom = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder s = new StringBuilder(lengthOfID);
+
+        int i;
+        for (i = 0; i < lengthOfID; i++) {
+            int ch = (int) (notSoRandom.length() * Math.random()); // generates a random number using Math.random()
+            s.append(notSoRandom.charAt(ch)); // adds a random character one by one at the end of s
+        }
+        return s.toString();
+    }// end IDGenerator
+
+    public boolean checkID(User u) {
+        // for(Object temp: u.get)
+        return true;
+    }
 }

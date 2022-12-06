@@ -1,5 +1,6 @@
 package mini.Tweet;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class NewsFeed implements Observer, Subject {
@@ -16,8 +17,10 @@ public class NewsFeed implements Observer, Subject {
     // ---------- Observer Implementation----------
     @Override
     public void update(String msg, Subject sub) {
+        Instant instant = Instant.now();
+        String output = Instant.now().toString();
         User u = (User) sub;
-        feed.add(u.getID() + ": " + msg);
+        feed.add(output + u.getID() + ": " + msg);
         notifyObs();
     }
     // ---------- End Observer Implementation----------
