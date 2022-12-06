@@ -19,8 +19,11 @@ public class NewsFeed implements Observer, Subject {
     public void update(String msg, Subject sub) {
         Instant instant = Instant.now();
         String output = Instant.now().toString();
+        long time = System.currentTimeMillis();
         User u = (User) sub;
+        u.setLastUpdate(time);
         feed.add(output + u.getID() + ": " + msg);
+        System.out.println("You have an update at " + time);
         notifyObs();
     }
     // ---------- End Observer Implementation----------

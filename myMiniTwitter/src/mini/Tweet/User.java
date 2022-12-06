@@ -15,6 +15,7 @@ public class User extends UserManager implements Subject {
     private String group;
     private String uniqueID;
     private long creationTime;
+    private long lastUpdate;
 
     // Constructor
     public User(String id, String group) {
@@ -29,6 +30,7 @@ public class User extends UserManager implements Subject {
             this.uniqueID = randomIDGenerator(5);
             System.out.println(uniqueID);
             this.creationTime = System.currentTimeMillis();
+            this.lastUpdate = getlastUpdated();
             System.out.println(getCreationTime());
             users.put(id, this);
         } else {
@@ -107,12 +109,20 @@ public class User extends UserManager implements Subject {
         return creationTime;
     }
 
+    public long getlastUpdated() {
+        return lastUpdate;
+    }
+
     public void setFollowers(ArrayList<Observer> followers) {
         this.followers = followers;
     }
 
     public void setFollowing(ArrayList<String> following) {
         this.following = following;
+    }
+
+    public void setLastUpdate(long lastUpdated) {
+        this.lastUpdate = lastUpdated;
     }
 
     public void setGroup(String group) {

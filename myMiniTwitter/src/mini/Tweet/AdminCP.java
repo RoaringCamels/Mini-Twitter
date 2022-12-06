@@ -165,7 +165,7 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
             }
         });
 
-        validateID.setText("Validate User IDs");
+        validateID.setText("Validate IDs");
         validateID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 validateIDActionPerformed(evt);
