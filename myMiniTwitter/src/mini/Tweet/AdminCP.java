@@ -51,7 +51,7 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
         groupTotal = new javax.swing.JButton();
         msgTotal = new javax.swing.JButton();
         validateID = new javax.swing.JButton();
-        validateGroupID = new javax.swing.JButton();
+        lastUpdated = new javax.swing.JButton();
         posPercentage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -172,10 +172,10 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
             }
         });
 
-        validateGroupID.setText("Validate Group IDs");
-        validateGroupID.addActionListener(new java.awt.event.ActionListener() {
+        lastUpdated.setText("Last Updated User");
+        lastUpdated.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                validateIDActionPerformed(evt);
+                lastUpdatedActionPerformed(evt);
             }
         });
 
@@ -212,7 +212,7 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(validateGroupID, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addComponent(lastUpdated, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         187,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
@@ -256,7 +256,7 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
                                                         .addComponent(groupTotal,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE, 50,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(validateGroupID,
+                                                        .addComponent(lastUpdated,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE, 50,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(5, 5, 5)
@@ -360,6 +360,13 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
         }
     }// GEN-LAST:event_msgTotalActionPerformed
 
+    private void lastUpdatedActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_msgTotalActionPerformed
+        lastUpdated lu = new lastUpdated();
+        if (current != null) {
+            current.accept(lu);
+        }
+    }// GEN-LAST:event_msgTotalActionPerformed
+
     private void posPercentageActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_posPercentageActionPerformed
         PositiveVisitor pv = new PositiveVisitor();
         if (current != null) {
@@ -381,7 +388,7 @@ public class AdminCP extends javax.swing.JFrame implements TreeSelectionListener
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton msgTotal;
     private javax.swing.JButton validateID;
-    private javax.swing.JButton validateGroupID;
+    private javax.swing.JButton lastUpdated;
     private javax.swing.JButton posPercentage;
     private javax.swing.JScrollPane sp;
     private javax.swing.JTree tree;
